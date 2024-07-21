@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p id="api-message">API message will appear here</p>
+    <script>
+        fetch('http://127.0.0.1:5000/api/hello')
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('api-message').textContent = data.message;
+          })
+          .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
